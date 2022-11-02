@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:leal_flutter/ui/screens/favorite/favorite_screen.dart';
 import 'package:leal_flutter/ui/screens/home/home_screen.dart';
 import 'package:leal_flutter/ui/screens/login/login_screen.dart';
 import 'package:leal_flutter/ui/screens/movie/movie_screen.dart';
 import 'package:leal_flutter/ui/screens/movie_details/movie_details_screen.dart';
-import 'package:leal_flutter/ui/screens/recent/recent_screen.dart';
-import 'package:leal_flutter/ui/screens/recent_details/recent_details_screen.dart';
 
 import '../../data/models/response_model.dart';
 import '../../ui/screens/auth/auth_screen.dart';
@@ -27,15 +24,6 @@ abstract class AppRoutes {
   ///The route to the movie details screen.
   static const movieDetails = '/movieDetails';
 
-  ///The route to the movie favorites screen.
-  static const favorite = '/favorite';
-
-  ///The route to the recent screen.
-  static const recent = '/recent';
-
-  ///The route to the recent details screen.
-  static const recentDetails = '/recentDetails';
-
   //?Routes
   static final routes = <String, WidgetBuilder>{
     initialRoute: (context) => const AuthScreen(),
@@ -53,8 +41,5 @@ abstract class AppRoutes {
 
       return MovieDetailsScreen(movie: movie);
     },
-    favorite: (context) => const FavoriteScreen(),
-    recent: (context) => const RecentScreen(),
-    recentDetails: (context) => const RecentDetailsScreen(),
   };
 }

@@ -7,6 +7,7 @@ import 'package:leal_flutter/ui/screens/movie_details/movie_details_screen.dart'
 import 'package:leal_flutter/ui/screens/recent/recent_screen.dart';
 import 'package:leal_flutter/ui/screens/recent_details/recent_details_screen.dart';
 
+import '../../data/models/response_model.dart';
 import '../../ui/screens/auth/auth_screen.dart';
 
 ///The routes of the application.
@@ -40,8 +41,18 @@ abstract class AppRoutes {
     initialRoute: (context) => const AuthScreen(),
     login: (context) => const LoginScreen(),
     home: (context) => const HomeScreen(),
-    movie: (context) => const MovieScreen(),
-    movieDetails: (context) => const MovieDetailsScreen(),
+    movie: (context) {
+      //?Get the movie from the arguments
+      final movie = ModalRoute.of(context)!.settings.arguments as Results;
+
+      return MovieScreen(movie: movie);
+    },
+    movieDetails: (context) {
+      //?Get the movie from the arguments
+      final movie = ModalRoute.of(context)!.settings.arguments as Results;
+
+      return MovieDetailsScreen(movie: movie);
+    },
     favorite: (context) => const FavoriteScreen(),
     recent: (context) => const RecentScreen(),
     recentDetails: (context) => const RecentDetailsScreen(),

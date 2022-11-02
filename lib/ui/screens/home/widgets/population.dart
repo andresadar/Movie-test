@@ -106,33 +106,37 @@ class _ItemPopulation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(right: 20),
-      child: Column(
-        children: [
-          ///Image
-          Container(
-              height: 180,
-              decoration: BoxDecoration(
-                color: UIColors.backgroundColor,
-                image: DecorationImage(
-                    image: NetworkImage(
-                        "https://image.tmdb.org/t/p/w500/${movie.backdropPath}"),
-                    fit: BoxFit.cover),
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
-              )),
+    return InkWell(
+      onTap: () =>
+          Navigator.pushNamed(context, AppRoutes.movie, arguments: movie),
+      child: Container(
+        margin: const EdgeInsets.only(right: 20),
+        child: Column(
+          children: [
+            ///Image
+            Container(
+                height: 180,
+                decoration: BoxDecoration(
+                  color: UIColors.backgroundColor,
+                  image: DecorationImage(
+                      image: NetworkImage(
+                          "https://image.tmdb.org/t/p/w500/${movie.backdropPath}"),
+                      fit: BoxFit.cover),
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                )),
 
-          ///Name movie
-          Text('${movie.name}', maxLines: 2, overflow: TextOverflow.ellipsis),
+            ///Name movie
+            Text('${movie.name}', maxLines: 2, overflow: TextOverflow.ellipsis),
 
-          ///Rating
-          Row(
-            children: [
-              const Icon(Icons.star, color: Colors.yellow),
-              Text('${movie.voteAverage}'),
-            ],
-          ),
-        ],
+            ///Rating
+            Row(
+              children: [
+                const Icon(Icons.star, color: Colors.yellow),
+                Text('${movie.voteAverage}'),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

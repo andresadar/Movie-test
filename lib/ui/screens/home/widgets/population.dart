@@ -9,7 +9,7 @@ class _PopulationWidget extends ConsumerStatefulWidget {
 }
 
 class __PopulationWidgetState extends ConsumerState<_PopulationWidget> {
-  late PopulationModel _population;
+  late ResponseModel _population;
   bool error = false;
   bool isLoading = false;
 

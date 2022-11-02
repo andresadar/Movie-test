@@ -1,13 +1,12 @@
-class PopulationModel {
+class ResponseModel {
   int? page;
   List<Results>? results;
   int? totalPages;
   int? totalResults;
 
-  PopulationModel(
-      {this.page, this.results, this.totalPages, this.totalResults});
+  ResponseModel({this.page, this.results, this.totalPages, this.totalResults});
 
-  PopulationModel.fromJson(Map<String, dynamic> json) {
+  ResponseModel.fromJson(Map<String, dynamic> json) {
     page = json['page'];
     if (json['results'] != null) {
       results = <Results>[];

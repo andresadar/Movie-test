@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:leal_flutter/data/models/population_model.dart';
+import 'package:leal_flutter/data/models/response_model.dart';
 import 'package:leal_flutter/ui/screens/auth/auth_controller.dart';
 import 'package:leal_flutter/ui/theme/colors.dart';
 import 'package:leal_flutter/ui/widgets/buttons/General_button.dart';

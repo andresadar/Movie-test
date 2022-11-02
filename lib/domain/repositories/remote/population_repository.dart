@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../data/models/population_model.dart';
+import '../../../data/models/response_model.dart';
 import '../../../data/services/remote/population_services.dart';
 
 ///This class contains the repository to get the population data.
@@ -12,7 +12,7 @@ class PopulationRepository {
   PopulationRepository(this._populationServices);
 
   ///Get the population data.
-  Future<PopulationModel> getPopulation() async {
+  Future<ResponseModel> getPopulation() async {
     ///Get the population data.
     return await _populationServices.getPopulation();
   }

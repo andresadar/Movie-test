@@ -9,19 +9,24 @@ import '../../models/user_model.dart';
 class AuthService {
   ///Save the user in the local storage.
   Future<void> saveUser(UserModel user) async {
+    ///Get the instance of the local storage.
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
+    ///Convert the user to json.
     final String userEncode = jsonEncode(user.toJson());
 
+    ///Save the user in the local storage.
     await prefs.setString('user', userEncode);
   }
 
   ///Gets the user from the local storage.
   Future<UserModel?> getUser() async {
+    ///Get the instance of the local storage.
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     final String? userEncode = prefs.getString('user');
 
+    ///If the user is not in the local storage, return null.
     if (userEncode != null) {
       final Map<String, dynamic> userDecode = jsonDecode(userEncode);
 
@@ -35,8 +40,10 @@ class AuthService {
 
   ///Signs out.
   Future<void> signOut() async {
+    ///Get the instance of the local storage.
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
+    ///Remove the user from the local storage.
     await prefs.remove('user');
   }
 }

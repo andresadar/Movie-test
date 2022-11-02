@@ -5,7 +5,9 @@ import '../../../data/models/user_model.dart';
 import '../../../domain/repositories/local/auth_repository.dart';
 
 class AuthController extends StateNotifier<AuthStates> {
-  AuthController(this._authRepository) : super(AuthInitialStates());
+  AuthController(this._authRepository) : super(AuthInitialStates()) {
+    getUser();
+  }
 
   ///The repository of the authentication screen.
   final AuthRepository _authRepository;
@@ -15,23 +17,6 @@ class AuthController extends StateNotifier<AuthStates> {
 
   ///?Get state of the authentication screen
   AuthStates get getState => state;
-
-  ///?Save the user in the local storage.
-  Future<void> saveUser(UserModel user) async {
-    try {
-      ///change the state of the authentication screen to loading.
-      changeState(AuthLoadingState());
-
-      ///save the user in the local storage.
-      await _authRepository.saveUser(user);
-
-      ///change the state of the authentication screen to logged in.
-      changeState(AuthLoggedInState(user: user));
-    } catch (e) {
-      ///Error to save the user in the local storage.
-      changeState(AuthErrorState(message: e.toString()));
-    }
-  }
 
   ///Gets the user from the local storage.
   Future<void> getUser() async {
@@ -47,7 +32,7 @@ class AuthController extends StateNotifier<AuthStates> {
         changeState(AuthLoggedInState(user: user));
       } else {
         ///change the state of the authentication screen to logged out.
-        changeState(AuthLoggedOutState());
+        changeState(AuthInitialStates());
       }
     } catch (e) {
       ///Error to get the user from the local storage.
